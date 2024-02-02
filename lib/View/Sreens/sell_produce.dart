@@ -134,7 +134,15 @@ class _SellProduceState extends State<SellProduce> {
     return GestureDetector(
       onTap: () {
         if (_formKey.currentState!.validate()) {
-          print('Selected Value:');
+          var data = {
+            'TypeOfCrop': selectedValue,
+            'Variety': VarietyController.text,
+            'ExpectedQuantity': QuantityController.text,
+            'Quantity': selectedQuantity,
+            'Price': PriceController.text,
+            'Note': NoteController.text
+          };
+          print('FornData $data');
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => const MapScreen()));
         }
