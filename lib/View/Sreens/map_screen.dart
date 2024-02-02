@@ -38,7 +38,7 @@ class _MapScreenState extends State<MapScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: ' Google Map', screen: 'GMap'),
+      appBar: CustomAppBar(title: ' Google Map', ButtonIsNotVisible: false),
       body: GoogleMap(
         mapType: MapType.normal,
         polygons: _polygon,

@@ -32,7 +32,7 @@ class _SellProduceState extends State<SellProduce> {
       ),
       appBar: const CustomAppBar(
         title: 'Sell Produce',
-        screen: 'SellProduce',
+        ButtonIsNotVisible: true,
       ),
       body: Container(
         child: SingleChildScrollView(
@@ -61,7 +61,9 @@ class _SellProduceState extends State<SellProduce> {
                       DropDownType: 'TypeCrop'),
                   // -------------Variety---------------
                   CustomTextInputField(
-                      title: 'Variety', Controller: VarietyController),
+                      title: 'Variety',
+                      Controller: VarietyController,
+                      isNumaric: false),
                   // -------------Expected Quantity-------------
                   SizedBox(
                     child: Row(
@@ -70,7 +72,8 @@ class _SellProduceState extends State<SellProduce> {
                             flex: 3,
                             child: CustomTextInputField(
                                 title: 'Expected Quantity',
-                                Controller: QuantityController)),
+                                Controller: QuantityController,
+                                isNumaric: true)),
                         Flexible(
                             flex: 2,
                             child: Padding(
@@ -85,10 +88,14 @@ class _SellProduceState extends State<SellProduce> {
                   ),
                   // ------------Price (per Kg)------------------
                   CustomTextInputField(
-                      title: 'Price (per Kg)', Controller: PriceController),
+                      title: 'Price (per Kg)',
+                      Controller: PriceController,
+                      isNumaric: true),
                   // Note
                   CustomTextInputField(
-                      title: 'Note', Controller: NoteController),
+                      title: 'Note',
+                      Controller: NoteController,
+                      isNumaric: false),
                   // ------------Image---------------
                   const Text(
                     ' Image ',
@@ -211,7 +218,9 @@ class _SellProduceState extends State<SellProduce> {
 
 // ---------------------------------------------------------------------------
   Widget CustomTextInputField(
-      {required String title, required TextEditingController Controller}) {
+      {required String title,
+      required TextEditingController Controller,
+      required bool isNumaric}) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Padding(
         padding: const EdgeInsets.only(top: 8.0),
@@ -229,6 +238,8 @@ class _SellProduceState extends State<SellProduce> {
           child: Padding(
             padding: const EdgeInsets.only(left: 16, right: 16),
             child: TextFormField(
+              keyboardType:
+                  isNumaric ? TextInputType.number : TextInputType.text,
               validator: (value) {
                 if (value == '') {
                   return '* required';
